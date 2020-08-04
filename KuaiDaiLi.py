@@ -38,7 +38,7 @@ def main():
 ip_list = []
 q = Queue()
 # 爬取的是800到1000页   靠后的代理可能用的人少点，。自我安慰。。
-for i in range(1 , 20):
+for i in range(1, 20):
     url = 'https://www.kuaidaili.com/free/inha/{}'.format(i)
     print(url)
     headers = {
