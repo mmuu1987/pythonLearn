@@ -1,6 +1,7 @@
 import requests
 import time
 import random
+import  os
 from lxml import etree
 
 from queue import Queue
@@ -15,7 +16,7 @@ def get_ip():
             proxies = q.get()
             try:
                 html = requests.get(url, headers=headers, proxies=proxies, timeout=1).text
-                print('ip可以用')
+                print('ip可以用========================================>>>>>>>>>>>>>>>>')
                 with open('ip.txt','a')as f:
                     f.write(str(proxies))
                     f.write('\n')
@@ -38,7 +39,9 @@ def main():
 ip_list = []
 q = Queue()
 # 爬取的是800到1000页   靠后的代理可能用的人少点，。自我安慰。。
-for i in range(1, 20):
+for i in range(1, 50):
+    if os.path.exists('ip.txt'):
+        os.remove('ip.txt')
     url = 'https://www.kuaidaili.com/free/inha/{}'.format(i)
     print(url)
     headers = {
@@ -51,7 +54,7 @@ for i in range(1, 20):
     parse_html = etree.HTML(html)
     tr_list = parse_html.xpath('//*[@id="list"]/table/tbody/tr')
     # 延迟访问6到11秒。
-    sleep = random.randint(6, 11)
+    sleep = random.randint(2, 5)
     print(f'等待{sleep}秒')
     time.sleep(sleep)
     print('开始')

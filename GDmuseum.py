@@ -31,7 +31,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Mobile Safari/537.36'}
 
 # 线程锁
-islock = 0
+islock = False
 
 
 # 线程安全
@@ -49,17 +49,21 @@ def TimeGetproxies():
     # 获取API接口返回的代理IP
     global islock
     print("线程加锁")
-    islock = 0
+    islock = False
     proxy_ip = requests.get(api_url).text
     global proxies
+    # proxies = {
+    #     "http": "http://%(user)s:%(pwd)s@%(proxy)s/" % {"user": username, "pwd": password, "proxy": proxy_ip},
+    #     "https": "http://%(user)s:%(pwd)s@%(proxy)s/" % {"user": username, "pwd": password, "proxy": proxy_ip}
+    # }
     proxies = {
         "http": "http://%(user)s:%(pwd)s@%(proxy)s/" % {"user": username, "pwd": password, "proxy": proxy_ip},
         "https": "http://%(user)s:%(pwd)s@%(proxy)s/" % {"user": username, "pwd": password, "proxy": proxy_ip}
     }
     print("定时获取IP代理========================>>>>>>>>>>>>>>>>>>>", proxies)
-    islock = 1
+    islock = True
     print("线程解锁")
-    Timer(120, TimeGetproxies).start()
+    Timer(1, TimeGetproxies).start()
 
 
 def safe_string(_string):

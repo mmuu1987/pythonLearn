@@ -273,8 +273,7 @@ if __name__ == '__main__':
          'ehCS0tgRmbw4TUhMNN5hmlEAkpaUZwk4NJgr35tZdOfOoflpDSLLBsuBY3TG67pJxIf4vCHh1YPIoeI2erPTPVFcgO9c=='
     # 加密后的密码，从浏览器或抓包工具中复制，可重复使用
     password2 = '5922c96f67a3413b8df00e19ee2660bdab1afa3cf77ea44786313f0f5fa164ec3fbc8316aa069b141ae63752de17ae5e461d' \
-                '2d0593e2e56ad69209464c1d3ffb4787970ab3c68010ac0dc3f240b4a7a44184d19ed599a743db60ead47eec932016571fb607' \ 
-                '9041569adea2ce5527ada9e78f88d3c22bb9973070420d7be3bbb1'
+                '2d0593e2e56ad69209464c1d3ffb4787970ab3c68010ac0dc3f240b4a7a44184d19ed599a743db60ead47eec932016571fb6079041569adea2ce5527ada9e78f88d3c22bb9973070420d7be3bbb1'
 
     ul = UsernameLogin(loginId, umidToken, ua, password2)
     ul.login()
